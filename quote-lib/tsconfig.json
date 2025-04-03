@@ -1,0 +1,12 @@
+{
+    "extends": "../tsconfig.base",
+    "compilerOptions": {
+        "module": "commonjs",
+        "declaration": true,
+        "declarationMap": true,
+        "outDir": "./lib",
+        "rootDir": "./src",
+        "composite": true,
+    },
+    "exclude": ["node_modules", "lib"],
+}
