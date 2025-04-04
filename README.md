@@ -21,7 +21,16 @@ Stačí pouze nainstalovat závislosti jednotlivých částí:
 ## Quote-lib
 
 Sdílená knihovna s číselníkem hlášek.
-Obsahuje jediný test, který lze vyvolat pomocí:
+
+Pro rozjetí dev verze:
+
+```sh
+(cd quote-lib && npm run dev)
+```
+
+Složka `src` obsahuje zdrojové soubory, `lib` pak zkompilované. Pro přidávání dalších hlašek stačí editovat soubor `src/quotes.ts` a rekompilovat.
+
+Obsahuje jediný test (`src/quotes.spec.ts`), který lze vyvolat pomocí:
 
 ```sh
 (cd quote-lib && npm run test)
@@ -31,12 +40,6 @@ Pro coverage report:
 
 ```sh
 (cd quote-lib && npm run coverage)
-```
-
-Pro rozjetí dev verze:
-
-```sh
-(cd quote-lib && npm run dev)
 ```
 
 Linting je dostupný skrze:
@@ -55,7 +58,7 @@ Formátování pomocí Prettieru pak:
 
 ![Frontend app preview](preview/FE.png)
 
-Aplikaci je možné rozběhnout pro development pomocí:
+Aplikaci je možné rozběhnout pro development pomocí (nejprvé je však nutné rozběhnout Quote-lib dev):
 
 ```sh
 (cd frontend && npm run dev)
@@ -79,7 +82,7 @@ Formátování pomocí Prettieru pak:
 
 ![Backend app preview](preview/BE.png)
 
-BE je obdobně jako FE možné pro dev rozjet pomocí:
+BE je obdobně jako FE možné pro dev rozjet pomocí (stejně tak je nejprvé nutné rozběhnout Quote-lib dev):
 
 ```sh
 (cd backend && npm run dev)
@@ -105,6 +108,13 @@ Formátování pomocí Prettieru pak:
 (cd backend && npm run format)
 ```
 
+## Troubleshooting
+
+### Module not found `@quote-lib/main`
+
+Může se stát jak u Frontendu, tak i Backendu. Důvodem je nejpravděpodobněji nějaká nekonzistence v `lib` souborech Quote-lib.
+Řešením smazat `tsconfig.tsbuildinfo` a znovu spustit dev verzi ve Quote-lib.
+
 ## Do budoucna
 
 Aneb co by se dalo vylepšit nad rámec práce:
@@ -114,3 +124,4 @@ Aneb co by se dalo vylepšit nad rámec práce:
 - Vytvořit flow pro deployment (zatím vše jen v `dev` režimu)
 - Využít API z Backendu pro Frontend
 - Promazat nevyužité soubory z defaultních templatů
+- Přesunout test v Quote-lib do samostatného adresáře, aby nebyl kompilován do `lib`.
